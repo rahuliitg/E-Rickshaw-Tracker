@@ -1,2 +1,8 @@
-# E-Rickshaw-Tracker
-An app that shows the real time movements of the E-Rickshaws in IIT Guwahati
+# erickshaw_tracker
+
+A new Flutter project.
+
+## Getting Started
+
+For help getting started with Flutter, view our online
+[documentation](https://flutter.io/).
