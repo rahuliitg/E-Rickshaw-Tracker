@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "952075129604",
+    "firebase_url": "https://e-rick-214011.firebaseio.com",
+    "project_id": "e-rick-214011",
+    "storage_bucket": "e-rick-214011.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:952075129604:android:0c160bc8b8cdca3e",
+        "android_client_info": {
+          "package_name": "com.example.erickshawtracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "952075129604-h3k82imrmf50hn0hagsth68c9se43tv7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDv4CV7dqc2oxfrQpC36hQPuUDiC9FZh1c"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

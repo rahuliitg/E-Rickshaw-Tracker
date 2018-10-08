@@ -1,0 +1,185 @@
+import 'package:photo_view/photo_view.dart';
+
+  GeoPoint topLeft = GeoPoint(26.188042, 91.690614);
+  GeoPoint bottomRight = GeoPoint(26.184754, 91.692824);
+  double imageHeight = 627.0 / 1.2;
+  double imageWidth = 325.0 / 1.2;
+  Widget shareButton() {
+    return Expanded(
+      child: RaisedButton(
+          color: Colors.lightGreenAccent,
+          child: Text((!isSharing) ? "Share" : "Stop Sharing"),
+          onPressed: () {
+            if (!isSharing) startSharing();
+            print(isSharing);
+
+            setState(() {
+              counter++;
+              isSharing = !isSharing;
+            });
+          }),
+    );
+    */
+  }
+  Widget imageWidget(){
+    
+  return Stack(
+ //   alignment: Alignment(10.1,10.2),
+    children: <Widget>[
+ Container(
+    child:  PhotoView(
+      imageProvider: AssetImage('images/map.png'),
+    ),
+ ),Container(
+    child:  PhotoView(
+      imageProvider: AssetImage('images/apple.png'),
+    ),
+    height: 10.0,
+    width: 10.0,
+ ),
+ Text("doney"),
+ Icon(Icons.add_alarm),
+  // ...
+
+    ], 
+  );
+  
+  List<Widget> map = new List();
+ 
+  for(int i =0;i<loc.length;i++){
+    map.add(Positioned(
+      left: convertx(loc[i].longitude)+10,
+      top: converty(loc[i].latitude),
+      child:CircleAvatar(backgroundColor: Colors.red,radius: 2.0,),
+    ));
+  }
+   map.add( Container(
+    color: Colors.transparent,
+    child:  PhotoView(
+      imageProvider: AssetImage('images/dot.png'),
+    ),
+  )/*
+    Positioned(
+    top:0.0,
+    left:0.0,
+    child:Image.asset('images/map3.png',scale: 1.2,),
+  )*/
+  );
+  return Stack(
+    children: map
+  )
+  ;
+  }
+  double convertx(double x){
+    return (x-topLeft.longitude)*(imageWidth)/(bottomRight.longitude-topLeft.longitude);
+  }
+  double converty(double y){
+    return (y-topLeft.latitude)*(imageHeight)/(bottomRight.latitude-topLeft.latitude);
+  }
+
+
+
+  /*
+          StreamBuilder(
+              stream:
+                  Firestore.instance.collection('currentlocation').snapshots(),
+              builder: (context, snapshot) {
+                if (!snapshot.hasData) return Text('Loading...');
+                return Column(
+                  children: printLoc(snapshot.data.documents),
+                );
+              }),
+          Row(
+            children: <Widget>[
+              buttons(context),
+            ],
+          )*/
+
+
+            List<Widget> printLoc(List<DocumentSnapshot> d) {
+    int length = d.length;
+    var ls = <Widget>[];
+    for (int i = 0; i < length; i++) {
+      DocumentSnapshot ds = d[i];
+      print('inprintloc');
+      loc.forEach((key, value) {
+        print(key);
+      });
+
+      setState(() {
+        loc[ds['name']] = ds['location'];
+      });
+      ls.add(Text(
+          " ${ds['name']}      ${ds['location'].latitude}  ${ds['location'].longitude}"));
+    }
+    return ls;
+  }
+
+
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("App"),
+      ),
+      body: Column(mainAxisSize: MainAxisSize.max, children: <Widget>[
+        Container(
+          child: Text(currentDriver,style: TextStyle(fontSize: 30.0,color: Colors.blue,)),
+          height: 30.0,
+        ),
+        Container(
+          child: mapWidget(),
+          height: 563.0,
+        ),
+      ]),
+      bottomNavigationBar: new Material(
+        child: new TabBar(
+          tabs: <Tab>[
+            new Tab(icon: new Icon(Icons.map)),
+            new Tab(icon: new Icon(Icons.pages))
+          ],
+          controller: controller,
+        ),
+        color: Colors.redAccent,
+      ),
+    );
+  }
+
+  Widget registerButton(BuildContext context) {
+    return Expanded(
+        child: RaisedButton(
+            color: Colors.lightGreenAccent,
+            child: Text("Register"),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => MyForm()),
+              );
+              setState(() {
+            
+              });
+            }));
+  }
+
+
+  
+    Timer.periodic(Duration(seconds: 1), (Timer sharing) {
+      if (isSharing)
+        setState(() {
+          counter++;
+        });
+      else
+        sharing.cancel();
+    });
+
+
+     /*
+    Code to print all users in database
+    Firestore.instance
+        .collection('driverdetails')
+        .snapshots()
+        .listen((snapshot) {
+      snapshot.documents.forEach((doc) {
+        //print(doc.documentID);
+      });
+    });
+    */
