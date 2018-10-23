@@ -1,8 +1,6 @@
-# erickshaw_tracker
+# E-Rickshaw Tracker
 
-A new Flutter project.
 
-## Getting Started
+A simple flutter app that shows current location of all drivers in IIT Guwahati so that student can find nearest driver and call him.
 
-For help getting started with Flutter, view our online
-[documentation](https://flutter.io/).
+Also database and contact feature of every driver is accessible from app.
